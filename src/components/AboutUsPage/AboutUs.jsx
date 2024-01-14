@@ -74,7 +74,7 @@ const AboutUs = () => {
                 <div className="team-setup">
                   <div className="team-items">
                     <div className="team-user">
-                      <img src="assets/images/team/1.jpg" />
+                      <img src="assets/images/team/1.jpg" alt="..." />
                     </div>
                     <div className="team-user-social">
                       <ol>
@@ -101,7 +101,7 @@ const AboutUs = () => {
                 <div className="team-setup">
                   <div className="team-items">
                     <div className="team-user">
-                      <img src="assets/images/team/2.jpg" />
+                      <img src="assets/images/team/2.jpg" alt="..." />
                     </div>
                     <div className="team-user-social">
                       <ol>
@@ -128,7 +128,7 @@ const AboutUs = () => {
                 <div className="team-setup">
                   <div className="team-items">
                     <div className="team-user">
-                      <img src="assets/images/team/3.jpg" />
+                      <img src="assets/images/team/3.jpg" alt="..." />
                     </div>
                     <div className="team-user-social">
                       <ol>
@@ -155,7 +155,7 @@ const AboutUs = () => {
                 <div className="team-setup">
                   <div className="team-items">
                     <div className="team-user">
-                      <img src="assets/images/team/4.jpg" />
+                      <img src="assets/images/team/4.jpg" alt="..." />
                     </div>
                     <div className="team-user-social">
                       <ol>
@@ -203,7 +203,7 @@ const AboutUs = () => {
               <div className="blog-main-card d-flex">
                 <article className="blog-sub">
                   <div className="blog-content">
-                    <img src="assets/images/blog/1.jpg" />
+                    <img src="assets/images/blog/1.jpg" alt="..." />
                   </div>
                   <div className="blog-content-section">
                     <div className="blo-content-title">
@@ -232,7 +232,7 @@ const AboutUs = () => {
                 </article>
                 <article className="blog-sub">
                   <div className="blog-content">
-                    <img src="assets/images/blog/2.jpg" />
+                    <img src="assets/images/blog/2.jpg" alt="..." />
                   </div>
                   <div className="blog-content-section">
                     <div className="blo-content-title">
@@ -261,7 +261,7 @@ const AboutUs = () => {
                 </article>
                 <article className="blog-sub">
                   <div className="blog-content">
-                    <img src="assets/images/blog/3.jpg" />
+                    <img src="assets/images/blog/3.jpg" alt="..." />
                   </div>
                   <div className="blog-content-section">
                     <div className="blo-content-title">

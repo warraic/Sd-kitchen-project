@@ -10,12 +10,12 @@
 }
 .sidebar_isopen {
   width: 200px;
-  background-color: #ffc400;
+  background-color: #ffd23e;
   opacity: 1;
 }
 .sidebar_isclose {
   width: 50px;
-  background-color: #e5ca72;
+  background-color: #ffc400;
   opacity: 0.8;
 }
 .logo_toggle{

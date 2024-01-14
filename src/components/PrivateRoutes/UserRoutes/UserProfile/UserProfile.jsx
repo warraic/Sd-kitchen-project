@@ -127,6 +127,7 @@ const UserDashboard = () => {
                       <>
                         <img
                           src={`/api/auth/get-photo/${auth.user._id}`}
+                          alt="..."
                           width="100%"
                           height="100%"
                         />
@@ -140,7 +141,7 @@ const UserDashboard = () => {
                   >
                     <img
                       src="/assets/images/pngegg.png"
-                      alt=""
+                      alt="..."                      
                       width="100%"
                       height="100%"
                     />
@@ -255,6 +256,7 @@ const UserDashboard = () => {
                       {previewImage ? (
                         <img
                           src={previewImage}
+                          alt="..."
                           width="200px"
                           height="200px"
                         />
@@ -262,6 +264,7 @@ const UserDashboard = () => {
                         <>
                           <img
                             src={`/api/auth/get-photo/${auth.user._id}`}
+                            alt="..."
                             width="200px"
                             height="200px"
                           />

@@ -3,9 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import "./sidebar.css";
 import { ApiContext } from "../PrivateRoutes/AdminRoutes/context-for-API/apicontext";
 import { DashboardOutlined } from "@mui/icons-material";
-import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
-import AddHomeWorkOutlinedIcon from '@mui/icons-material/AddHomeWorkOutlined';
-import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
+import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
+import AddHomeWorkOutlinedIcon from "@mui/icons-material/AddHomeWorkOutlined";
+import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
+import RingVolumeIcon from "@mui/icons-material/RingVolume";
 const AdminSidebar = () => {
   const { isOpen, handleSidebar } = useContext(ApiContext);
   const location = useLocation();
@@ -29,7 +30,12 @@ const AdminSidebar = () => {
     {
       path: "/private/auth/receive-orders",
       name: "Orders",
-      icon: <Inventory2OutlinedIcon />,
+      icon: <RingVolumeIcon />,
+    },
+    {
+      path: "/private/auth/receive-orders",
+      name: "Messages",
+      icon: <RingVolumeIcon />,
     },
   ];
   return (
@@ -55,9 +61,9 @@ const AdminSidebar = () => {
             </div>
           </div>
         </div>
-        <div className="d-flex justify-content-center w-100">
-          <div className="ms-1 w-100">
-            {routes.map((page) => (
+        <div className="w-100">
+          {routes.map((page) => (
+            <div className="">
               <Link
                 to={page.path}
                 key={page.name}
@@ -70,8 +76,8 @@ const AdminSidebar = () => {
                   <span className="mx-3">{isOpen ? page.name : ""}</span>
                 </span>
               </Link>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

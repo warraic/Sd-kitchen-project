@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./nav.css";
 import { useLocation, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+// import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { IconButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
@@ -22,21 +22,21 @@ const Navbar = () => {
   const active = location.pathname;
   const navigate = useNavigate();
   var auth = JSON.parse(localStorage.getItem("auth"));
+  const userId = auth?.user?._id;
   const handleLogout = () => {
     localStorage.removeItem("auth");
     navigate("/login");
   };
 
   const [count, setCount] = useState("0");
- 
+
   useEffect(() => {
     const getAllCartItem = async () => {
       if (auth) {
         try {
-          const userId = auth.user._id;
           const { data } = await axios.get(`/api/auth/cart/get-cart/${userId}`);
-          if (auth.user.role !== 1) {
-            setCount(data.cart.length);
+          if (auth?.user?.role !== 1) {
+            setCount(data?.cart?.length);
           }
         } catch (error) {
           console.log(error);
@@ -47,7 +47,7 @@ const Navbar = () => {
       }
     };
     getAllCartItem();
-  }, []);
+  }, [userId, auth, navigate]);
 
   const cartCounter = count;
   return (
@@ -151,20 +151,22 @@ const Navbar = () => {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      {auth.user?(
-                         <img
-                         className="auth_image"
-                           src={`/api/auth/get-photo/${auth.user._id}`}
-                           width="40px"
-                           height="40px"
-                         />
-                      ):(
+                      {auth?.user ? (
                         <img
-                         className="auth_image"
-                           src={`/api/auth/get-photo/${auth.user._id}`}
-                           width="40px"
-                           height="40px"
-                         />
+                          className="auth_image"
+                          src={`/api/auth/get-photo/${auth?.user?._id}`}
+                          width="40px"
+                          alt="..."
+                          height="40px"
+                        />
+                      ) : (
+                        <img
+                          className="auth_image"
+                          src={`/api/auth/get-photo/${auth?.user?._id}`}
+                          width="40px"
+                          alt="..."
+                          height="40px"
+                        />
                       )}
                     </div>
                     <ul
@@ -172,45 +174,45 @@ const Navbar = () => {
                       aria-labelledby="dropdownMenu2"
                     >
                       <li>
-                        <button className="dropdown-item" type="button">
-                          <Link
-                            to={
-                              auth && auth.user.role === 0
-                                ? "/private/auth/user-profile"
-                                : auth && auth.user.role === 1
-                                ? "/private/auth/admin-profile"
-                                : "/login"
-                            }
-                            className="text-decoration-none text-dark"
-                          >
+                        <Link
+                          to={
+                            auth && auth?.user?.role === 0
+                              ? "/private/auth/user-profile"
+                              : auth && auth?.user?.role === 1
+                              ? "/private/auth/admin-profile"
+                              : "/login"
+                          }
+                          className="text-decoration-none text-dark"
+                        >
+                          <button className="dropdown-item" type="button">
                             Profile
-                          </Link>
-                        </button>
+                          </button>
+                        </Link>
                       </li>
                       <li>
-                        {auth.user.role !== 1 && (
-                          <button className="dropdown-item" type="button">
-                            <Link
-                              to="/private/auth/order-status"
-                              className="text-decoration-none text-dark"
-                            >
+                        {auth?.user?.role !== 1 && (
+                          <Link
+                            to="/private/auth/order-status"
+                            className="text-decoration-none text-dark"
+                          >
+                            <button className="dropdown-item" type="button">
                               Order Status
-                            </Link>
-                          </button>
+                            </button>
+                          </Link>
                         )}
                       </li>
                       <li>
                         <button className="dropdown-item" type="button">
-                          {auth && auth && auth.user.role === 1 && (
+                          {auth && auth && auth?.user?.role === 1 && (
                             <Link
                               to={
-                                auth && auth && auth.user.role === 1
+                                auth && auth && auth?.user?.role === 1
                                   ? "/private/auth/admin-dashboard"
                                   : "/login"
                               }
-                              className="text-decoration-none text-dark"
+                              className="text-decoration-none text-dark w-100"
                             >
-                              Dashboard
+                              <label className="w-100">Dashboard</label>
                             </Link>
                           )}
                         </button>
@@ -219,7 +221,7 @@ const Navbar = () => {
                         <button className="dropdown-item" type="button">
                           <button
                             onClick={handleLogout}
-                            className="text-dark btn btn-warning"
+                            className="btn btn-warning fw-bold text-light p-1 w-100"
                           >
                             Logout
                           </button>

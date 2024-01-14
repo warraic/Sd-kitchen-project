@@ -6,7 +6,7 @@ import Navbar from "../../../../navbar/Navbar";
 import axios from "axios";
 const AdminDashboard = () => {
   const {
-    // earning, orders, lineChartDate, saleItems,
+     earning, orders, saleItems,
     isOpen,
   } = useContext(ApiContext);
   // const formattedDates = updatedAt.map((dateString) => new Date(dateString));
@@ -75,24 +75,37 @@ const AdminDashboard = () => {
             >
               <div className="container-fluid mt-3">
                 <div className="row ">
-                  <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                  <div className="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
                     <div className="m-3 counts">
                       <div className="">
-                        In progress order <br />
+                        In Progress <br />
+                        <label className="text-center w-100">{saleItems}</label> 
+
                       </div>
                     </div>
                   </div>
-                  <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                  <div className="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                    <div className="m-3 counts">
+                      <div className="">
+                        Sold Items <br />
+                        <label className="text-center w-100">{saleItems}</label> 
+
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
                     <div className="m-3 counts">
                       <div className="">
                         Received Order <br />
+                        <label className="text-center w-100">{orders}</label> 
                       </div>
                     </div>
                   </div>
-                  <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                  <div className="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
                     <div className="m-3 counts">
                       <div className="">
-                        Total Spend <br />{" "}
+                        Total earning <br />
+                        <label className="text-center w-100">{earning}</label> 
                       </div>
                     </div>
                   </div>

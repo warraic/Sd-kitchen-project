@@ -1,11 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
-import { ThemeContext } from "../useContext/globalContext";
+import React, { useState, useEffect } from "react";
+// import { ThemeContext } from "../useContext/globalContext";
 import axios from "axios";
 import { useNavigate } from "react-router";
-
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
+import { MenuItem } from "@mui/material";
 const Main = () => {
   const navigate = useNavigate();
-  const { darkMode } = useContext(ThemeContext);
+  // const { darkMode } = useContext(ThemeContext);
   const Auth = JSON.parse(localStorage.getItem("auth"));
 
   const [allProducts, setAllProducts] = useState([]);
@@ -14,7 +17,47 @@ const Main = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [size, setSize] = useState({});
 
+  var auth = JSON.parse(localStorage.getItem("auth"));
+  const userId = auth?.user?._id;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
+  const onSubmit = async (data) => {
+    try {
+      debugger;
+      data.userId = userId;
+      const res = await axios.post("/api/auth/message/get-in-touch", data);
+      console.log(data);
+      if (res.data.success) {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      } else {
+        Swal.fire({
+          position: "top-center",
+          icon: "error",
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        position: "top-center",
+        icon: "error",
+        title: " Failed to sent Message successfully",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
+  };
 
   useEffect(() => {
     const getAllCategory = async () => {
@@ -170,10 +213,10 @@ const Main = () => {
                             </h5>
                             <ol>
                               <li>
-                                <a href="#">
+                                <Link to="#">
                                   Order Now
                                   <span className="flaticon-right-arrow" />
-                                </a>
+                                </Link>
                               </li>
                             </ol>
                           </div>
@@ -181,7 +224,7 @@ const Main = () => {
                       </div>
                       <div className="col-md-6 col-sm-12">
                         <div className="wrapper">
-                          <img src="assets/images/slider/slide-01.png" />
+                          <img src="assets/images/slider/slide-01.png" alt="..." />
                         </div>
                       </div>
                     </div>
@@ -202,10 +245,10 @@ const Main = () => {
                             </h5>
                             <ol>
                               <li>
-                                <a href="#">
+                                <Link to="#">
                                   Order Now
                                   <span className="flaticon-right-arrow" />
-                                </a>
+                                </Link>
                               </li>
                             </ol>
                           </div>
@@ -213,7 +256,7 @@ const Main = () => {
                       </div>
                       <div className="col-md-6 col-sm-12">
                         <div className="wrapper">
-                          <img src="assets/images/slider/slide-02.png" />
+                          <img src="assets/images/slider/slide-02.png" alt="..." />
                         </div>
                       </div>
                     </div>
@@ -234,10 +277,10 @@ const Main = () => {
                             </h5>
                             <ol>
                               <li>
-                                <a href="#">
+                                <Link to="#">
                                   Order Now
                                   <span className="flaticon-right-arrow" />
-                                </a>
+                                </Link>
                               </li>
                             </ol>
                           </div>
@@ -245,7 +288,7 @@ const Main = () => {
                       </div>
                       <div className="col-md-6 col-sm-12">
                         <div className="wrapper">
-                          <img src="assets/images/slider/slide-03.png" />
+                          <img src="assets/images/slider/slide-03.png" alt="..." />
                         </div>
                       </div>
                     </div>
@@ -335,7 +378,7 @@ const Main = () => {
               <div className="col-md-6 col-sm-12">
                 <div className="wrapper">
                   <div className="image">
-                    <img src="assets/images/about.png" />
+                    <img src="assets/images/about.png" alt="..." />
                   </div>
                 </div>
               </div>
@@ -355,11 +398,11 @@ const Main = () => {
                   </p>
                   <ol>
                     <li>
-                      <a href="#">Learn More</a>
+                      <Link to="#">Learn More</Link>
                     </li>
                     <li>
                       <span className="flaticon-play-button" />
-                      <a href="#">Watch Video</a>
+                      <Link to="#">Watch Video</Link>
                     </li>
                   </ol>
                 </div>
@@ -595,7 +638,7 @@ const Main = () => {
                                                 product.productImage ||
                                                 `/api/auth/product/product-photo/${product._id}`
                                               }
-                                              alt={product.name}
+                                             alt="..."
                                               height="200"
                                               width="100%"
                                             />
@@ -736,7 +779,7 @@ const Main = () => {
                 <div className="team-setup">
                   <div className="team-items">
                     <div className="team-user">
-                      <img src="assets/images/team/1.jpg" />
+                      <img src="assets/images/team/1.jpg" alt="..." />
                     </div>
                     <div className="team-user-social">
                       <ol>
@@ -763,7 +806,7 @@ const Main = () => {
                 <div className="team-setup">
                   <div className="team-items">
                     <div className="team-user">
-                      <img src="assets/images/team/2.jpg" />
+                      <img src="assets/images/team/2.jpg" alt="..." />
                     </div>
                     <div className="team-user-social">
                       <ol>
@@ -790,7 +833,7 @@ const Main = () => {
                 <div className="team-setup">
                   <div className="team-items">
                     <div className="team-user">
-                      <img src="assets/images/team/3.jpg" />
+                      <img src="assets/images/team/3.jpg" alt="..." />
                     </div>
                     <div className="team-user-social">
                       <ol>
@@ -817,7 +860,7 @@ const Main = () => {
                 <div className="team-setup">
                   <div className="team-items">
                     <div className="team-user">
-                      <img src="assets/images/team/4.jpg" />
+                      <img src="assets/images/team/4.jpg" alt="..." />
                     </div>
                     <div className="team-user-social">
                       <ol>
@@ -865,7 +908,7 @@ const Main = () => {
               <div className="blog-main-card d-flex">
                 <article className="blog-sub">
                   <div className="blog-content">
-                    <img src="assets/images/blog/1.jpg" />
+                    <img src="assets/images/blog/1.jpg" alt="..."/>
                   </div>
                   <div className="blog-content-section">
                     <div className="blo-content-title">
@@ -892,7 +935,7 @@ const Main = () => {
                 </article>
                 <article className="blog-sub">
                   <div className="blog-content">
-                    <img src="assets/images/blog/2.jpg" />
+                    <img src="assets/images/blog/2.jpg" alt="..." />
                   </div>
                   <div className="blog-content-section">
                     <div className="blo-content-title">
@@ -919,7 +962,7 @@ const Main = () => {
                 </article>
                 <article className="blog-sub">
                   <div className="blog-content">
-                    <img src="assets/images/blog/3.jpg" />
+                    <img src="assets/images/blog/3.jpg" alt="..." />
                   </div>
                   <div className="blog-content-section">
                     <div className="blo-content-title">
@@ -964,33 +1007,53 @@ const Main = () => {
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div className="wrapper">
-                  <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                       <input
                         className="form-control"
+                        {...register("name", { required: true })}
                         placeholder="Enter Your Name"
                         required="name"
-                        role="text"
-                        name="name"
+                        type="text"
                       />
+                      <div>
+                        {errors.email && (
+                          <MenuItem sx={{ color: "red" }}>
+                            Full Name is required
+                          </MenuItem>
+                        )}
+                      </div>
                     </div>
                     <div className="form-group">
                       <input
                         className="form-control"
+                        {...register("email", { required: true })}
                         placeholder="Enter Your Email"
                         required="email"
-                        role="text"
-                        name="email"
+                        type="text"
                       />
+                      <div>
+                        {errors.email && (
+                          <MenuItem sx={{ color: "red" }}>
+                            Email is required
+                          </MenuItem>
+                        )}
+                      </div>
                     </div>
                     <div className="form-group">
                       <input
                         className="form-control"
+                        {...register("phoneNo", { required: true })}
                         placeholder="Enter Your Mobilenumber"
-                        required="phone"
-                        role="phone"
-                        name="phone"
+                        type="number"
                       />
+                      <div>
+                        {errors.email && (
+                          <MenuItem sx={{ color: "red" }}>
+                            Mobile Number is required
+                          </MenuItem>
+                        )}
+                      </div>
                     </div>
                     <div className="form-group">
                       <textarea
@@ -998,12 +1061,16 @@ const Main = () => {
                         id
                         cols={30}
                         rows={8}
+                        type="text"
+                        {...register("message", { required: true })}
                         placeholder="Enter Your Message"
                         defaultValue={""}
                       />
                     </div>
                     <div className="form-group">
-                      <a href="#">send message</a>
+                      <button className="btn btn-warning w-100" type="submit">
+                        send message
+                      </button>
                     </div>
                   </form>
                 </div>
@@ -1013,6 +1080,7 @@ const Main = () => {
                   <div className="map">
                     <iframe
                       style={{ width: "100%" }}
+                      title="sd-kitchen"
                       src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d249759.19784092825!2d79.10145254589841!3d12.009924873581818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1448883859107"
                       height={480}
                       frameBorder={0}

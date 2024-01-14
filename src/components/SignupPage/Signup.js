@@ -1,13 +1,13 @@
 import React from "react";
 import './login.css'
-import { Box, Paper, Button, MenuItem } from "@mui/material";
+import { Button, MenuItem } from "@mui/material";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from '../navbar/Navbar'
+// import Navbar from '../navbar/Navbar'
 import Footer from "../footer/Footer";
 function Signup() {
   const navigate = useNavigate();

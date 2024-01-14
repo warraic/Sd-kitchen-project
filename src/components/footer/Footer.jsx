@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -23,11 +24,11 @@ const Footer = () => {
         <div className="footer-content">
           <h2>Quick Links</h2>
           <ol>
-            <li><a href="#"><i className="flaticon-double-right-arrows-angles" />Home</a></li>
-            <li><a href="#"><i className="flaticon-double-right-arrows-angles" />About Us</a></li>
-            <li><a href="#"><i className="flaticon-double-right-arrows-angles" />Services</a></li>
-            <li><a href="#"><i className="flaticon-double-right-arrows-angles" />Blog</a></li>
-            <li><a href="#"><i className="flaticon-double-right-arrows-angles" />Contact Us</a></li>
+            <li><Link to="#"><i className="flaticon-double-right-arrows-angles" />Home</Link></li>
+            <li><Link to="#"><i className="flaticon-double-right-arrows-angles" />About Us</Link></li>
+            <li><Link to="#"><i className="flaticon-double-right-arrows-angles" />Services</Link></li>
+            <li><Link to="#"><i className="flaticon-double-right-arrows-angles" />Blog</Link></li>
+            <li><Link to="#"><i className="flaticon-double-right-arrows-angles" />Contact Us</Link></li>
           </ol>
         </div>
       </div>
@@ -35,11 +36,11 @@ const Footer = () => {
         <div className="footer-content">
           <h2>Services</h2>
           <ol>
-            <li><a href="#"><i className="flaticon-double-right-arrows-angles" />Home</a></li>
-            <li><a href="#"><i className="flaticon-double-right-arrows-angles" />About Us</a></li>
-            <li><a href="#"><i className="flaticon-double-right-arrows-angles" />Services</a></li>
-            <li><a href="#"><i className="flaticon-double-right-arrows-angles" />Blog</a></li>
-            <li><a href="#"><i className="flaticon-double-right-arrows-angles" />Contact Us</a></li>
+            <li><Link to="#"><i className="flaticon-double-right-arrows-angles" />Home</Link></li>
+            <li><Link to="#"><i className="flaticon-double-right-arrows-angles" />About Us</Link></li>
+            <li><Link to="#"><i className="flaticon-double-right-arrows-angles" />Services</Link></li>
+            <li><Link to="#"><i className="flaticon-double-right-arrows-angles" />Blog</Link></li>
+            <li><Link to="#"><i className="flaticon-double-right-arrows-angles" />Contact Us</Link></li>
           </ol>
         </div>
       </div>

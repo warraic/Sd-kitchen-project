@@ -26,17 +26,22 @@ const {isOpen} = useContext(ApiContext)
   // /get-user/:userId
 
   useEffect(() => {
+    if(auth ){
+      
+    }
     const getuser = async () => {
       try {
+       if(auth){
         const { data } = await axios.get(`/api/auth/get-user/${userId}`);
         console.log(data);
-        setId(data.user._id);
-        setFullName(data.user.fullName);
-        setAnswer(data.user.answer);
-        setPhoneNo(data.user.phoneNo);
-        setEmail(data.user.email);
-        // setPassword(data.user.password);
-        setRole(data.user.role);
+        setId(data?.user?._id);
+        setFullName(data?.user?.fullName);
+        setAnswer(data?.user?.answer);
+        setPhoneNo(data?.user?.phoneNo);
+        setEmail(data?.user?.email);
+        // setPassword(data?.user?.password);
+        setRole(data?.user?.role);
+       }
       } catch (error) {
         console.log(error);
         window.alert("Failed to get profile data  ");
@@ -112,6 +117,7 @@ const {isOpen} = useContext(ApiContext)
                               <>
                                 <img
                                   src={`/api/auth/get-photo/${auth.user._id}`}
+                                  alt="..."
                                   width="100%"
                                   height="100%"
                                 />
@@ -125,7 +131,7 @@ const {isOpen} = useContext(ApiContext)
                           >
                             <img
                               src="/assets/images/pngegg.png"
-                              alt=""
+                              alt="..."
                               width="100%"
                               height="100%"
                             />
@@ -240,6 +246,7 @@ const {isOpen} = useContext(ApiContext)
                               {previewImage ? (
                                 <img
                                   src={previewImage}
+                                  alt="..."
                                   width="200px"
                                   height="200px"
                                 />
@@ -247,6 +254,7 @@ const {isOpen} = useContext(ApiContext)
                                 <>
                                   <img
                                     src={`/api/auth/get-photo/${auth.user._id}`}
+                                    alt="..."
                                     width="200px"
                                     height="200px"
                                   />
@@ -299,7 +307,7 @@ const {isOpen} = useContext(ApiContext)
                             </div>
                             <div className="mb-3">
                               <label className="form-label">
-                                Enter Father name
+                                Email
                               </label>
                               <input
                                 type="email"

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { ThemeContext } from "../useContext/globalContext";
+import React, { useState, useEffect } from "react";
+// import { ThemeContext } from "../useContext/globalContext";
 import axios from "axios";
 import "./Ourmenu.css";
 import { useNavigate } from "react-router";
@@ -7,7 +7,7 @@ import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 const OurMenu = () => {
   const navigate = useNavigate();
-  const { darkMode } = useContext(ThemeContext);
+  // const { darkMode } = useContext(ThemeContext);
   const Auth = JSON.parse(localStorage.getItem("auth"));
 
   const [allProducts, setAllProducts] = useState([]);
@@ -259,7 +259,7 @@ const OurMenu = () => {
                                       product.productImage ||
                                       `/api/auth/product/product-photo/${product._id}`
                                     }
-                                    alt={product.name}
+                                    alt="..."                                    
                                     height="200"
                                     width="100%"
                                   />
