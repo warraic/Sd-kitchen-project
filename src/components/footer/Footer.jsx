@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="footer-content">
           <h2>SMART CHARITABLES</h2>
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime adipisci veniam
-            voluptatum voluptatem sed ex error beatae, asperiores dignissimos?</p>
+             voluptatum voluptatem sed ex error beatae, asperiores dignissimos?</p>
           <ul>
             <li><i className="flaticon-facebook" /></li>
             <li><i className="flaticon-twitter" /></li>
